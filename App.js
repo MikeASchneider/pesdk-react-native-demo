@@ -41,44 +41,13 @@ const App: () => React$Node = () => {
     let image = require('./assets/LA.jpg');
     // Set up configuration
     let configuration: Configuration = {
-      // Configure sticker tool
-      sticker: {
-        // Enable personal stickers
-        personalStickers: true,
-        // Configure stickers
-        categories: [
-          // Create sticker category with stickers
-          {
-            identifier: 'example_sticker_category_logos',
-            name: 'Logos',
-            thumbnailURI: require('./assets/React-Logo.png'),
-            items: [
-              {
-                identifier: 'example_sticker_logos_react',
-                name: 'React',
-                stickerURI: require('./assets/React-Logo.png'),
-              },
-              {
-                identifier: 'example_sticker_logos_imgly',
-                name: 'img.ly',
-                stickerURI: require('./assets/imgly-Logo.png'),
-                tintMode: TintMode.SOLID,
-              },
-            ],
-          },
-          // Use existing sticker category
-          {identifier: 'imgly_sticker_category_emoticons'},
-          // Modify existing sticker category
-          {
-            identifier: 'imgly_sticker_category_shapes',
-            items: [
-              {identifier: 'imgly_sticker_shapes_badge_01'},
-              {identifier: 'imgly_sticker_shapes_arrow_02'},
-              {identifier: 'imgly_sticker_shapes_spray_03'},
-            ],
-          },
-        ],
-      },
+      transform: {
+        allowFreeCrop: false,
+        items: [
+          // 'Snapchat' displays in iOS but in Android it displays as '9 : 16'
+          { width: 9, height: 16, toggleable: false, name: 'Snapchat' }
+        ]
+      }
     };
     PESDK.openEditor(image, configuration).then(
       (result) => {
